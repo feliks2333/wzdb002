@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>作品集 / WORKS — WEIZHI MEDIA TERMINAL</title>
+<meta name="description" content="WEIZHI 的作品集：卡片按 assets/js/works.js 渲染，含编号、类型、封面、简介与关联音视频。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">WEIZHI <em>MEDIA</em> TERMINAL</span>
+      <span class="brand__sub mono">未址媒体终端</span>
+    </a>
+    <nav class="topnav" aria-label="主导航">
+      <a href="index.html">01 / HOME</a>
+      <a href="music.html">02 / MUSIC</a>
+      <a href="video.html">03 / VIDEO</a>
+      <a href="portfolio.html">04 / WORKS</a>
+      <a href="about.html">05 / ABOUT</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="lamp lamp--on" aria-hidden="true"></span>
+      <span class="mono status-text">STATUS:<b>ONLINE</b></span>
+      <span class="mono clock" data-clock title="本地时间">--:--:--</span>
+      <span class="mono rev-badge">REV0.1</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-head">
+    <h1 class="page-head__title">作品集<span>// WORK ARCHIVE / UNIT-04</span></h1>
+    <p class="page-head__desc">
+      卡片按 <code class="mono">assets/js/works.js → works[]</code> 渲染：编号、标题、类型、封面、简介与关联音视频。
+      点击任意卡片在下方展开详情面板，可直接试听关联音频、试看关联视频。
+    </p>
+    <div class="page-head__meta">
+      <span class="chip chip--accent">UNIT-04</span>
+      <span class="chip"><span data-bind="count-works">00</span> UNITS</span>
+    </div>
+  </div>
+
+  <div class="filters" role="group" aria-label="按类型筛选">
+    <span class="mono muted filters__label">FILTER /</span>
+    <button class="btn is-active" data-filter="ALL">全部 ALL</button>
+    <button class="btn" data-filter="MV">MV</button>
+    <button class="btn" data-filter="AUDIO">AUDIO</button>
+    <button class="btn" data-filter="VIDEO">VIDEO</button>
+    <button class="btn" data-filter="ARCHIVE">ARCHIVE</button>
+    <span class="grow"></span>
+    <span class="mono muted" id="wk-count">--</span>
+  </div>
+
+  <!-- 详情面板：默认隐藏，点开卡片后展开 -->
+  <section class="detail" id="wk-detail" aria-live="polite">
+    <div class="detail__head">
+      <span class="panel__code mono" id="d-code">--</span>
+      <h2 class="panel__title" id="d-title">--</h2>
+      <span class="mono" style="color:var(--c-muted-d)" id="d-type">--</span>
+      <span class="grow"></span>
+      <button class="btn btn--ghost-dark" id="d-close">关闭 [ESC]</button>
+    </div>
+    <div class="detail__body">
+      <div class="detail__aside">
+        <div class="card__media" id="d-media"></div>
+        <div class="panel__inner">
+          <div class="kv" id="d-kv"></div>
+        </div>
+      </div>
+      <div class="detail__main">
+        <h3 style="font-size:14px;">项目说明 / BRIEF</h3>
+        <p class="muted" id="d-desc" style="font-size:13px;">--</p>
+
+        <div id="d-audio-wrap" class="hidden">
+          <hr class="hr">
+          <h3 style="font-size:14px;">关联音频 / AUDIO LINK</h3>
+          <div id="d-audio"></div>
+        </div>
+
+        <div id="d-video-wrap" class="hidden">
+          <hr class="hr">
+          <h3 style="font-size:14px;">关联影像 / VIDEO LINK</h3>
+          <div id="d-video"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel mt" data-panel>
+    <div class="panel__head">
+      <span class="panel__code mono">GRID</span>
+      <h2 class="panel__title">作品卡片 / UNITS</h2>
+      <span class="panel__meta mono" data-panel-status data-on="INDEXED" data-off="IDLE">STATUS:<b>INDEXED</b></span>
+      <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起作品卡片区">[–]</button>
+    </div>
+    <div class="panel__body">
+      <div class="panel__inner">
+        <div class="grid" id="wk-grid"></div>
+      </div>
+      <div class="panel__foot mono">
+        <span>DATA: works.js → works[]</span>
+        <span class="grow"></span>
+        <span>点击卡片展开详情 · 支持 portfolio.html#WRK-001 直达</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner mono">
+    <span>WEIZHI MEDIA TERMINAL / 未址媒体终端</span>
+    <span>UNIT-04 · WORKS · REV0.1</span>
+    <span>© <span data-bind="year">2025</span> WEIZHI — STATIC / NO BACKEND</span>
+  </div>
+</footer>
+
+<script src="assets/js/works.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/portfolio.js"></script>
+</body>
+</html>

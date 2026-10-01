@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WEIZHI MEDIA TERMINAL — 未址媒体终端</title>
+<meta name="description" content="WEIZHI 的个人作品终端：影像 / 声音 / 交互装置。工业机能风静态站点。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ===================================================== 顶栏状态条 -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">WEIZHI <em>MEDIA</em> TERMINAL</span>
+      <span class="brand__sub mono">未址媒体终端</span>
+    </a>
+    <nav class="topnav" aria-label="主导航">
+      <a href="index.html">01 / HOME</a>
+      <a href="music.html">02 / MUSIC</a>
+      <a href="video.html">03 / VIDEO</a>
+      <a href="portfolio.html">04 / WORKS</a>
+      <a href="about.html">05 / ABOUT</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="lamp lamp--on" aria-hidden="true"></span>
+      <span class="mono status-text">STATUS:<b>ONLINE</b></span>
+      <span class="mono clock" data-clock title="本地时间">--:--:--</span>
+      <span class="mono rev-badge">REV0.1</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="shell-home">
+
+    <!-- ============================================ 左栏：简介 + 导航 -->
+    <div class="col">
+
+      <section class="hero">
+        <div class="hero__top">
+          <span class="chip chip--accent">UNIT-01</span>
+          <span class="chip chip--ink">PERSONAL ARCHIVE</span>
+          <span class="chip">LOCAL / OFFLINE-FIRST</span>
+        </div>
+        <h1 class="hero__name">
+          WEIZHI MEDIA TERMINAL
+          <small>未址媒体终端 · 影像 / 声音 / 交互装置</small>
+        </h1>
+        <p class="hero__tagline" data-bind="tagline">冷却的机器，发热的表达。</p>
+        <p class="hero__intro" data-bind="intro">
+          这里是 WEIZHI 的个人作品终端，收纳影像、声音与交互装置的实验记录。
+        </p>
+        <div class="btn-row mt-s">
+          <a class="btn btn--solid" href="portfolio.html">查看作品集</a>
+          <a class="btn" href="music.html">进入音乐台</a>
+          <a class="btn" href="about.html">关于 / 联系</a>
+        </div>
+      </section>
+
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">NAV-00</span>
+          <h2 class="panel__title">导航 / NAVIGATION</h2>
+          <span class="panel__meta mono" data-panel-status data-on="READY" data-off="IDLE">STATUS:<b>READY</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起导航面板">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner" style="padding:0">
+            <nav class="nav-grid" aria-label="站点导航">
+              <a class="nav-tile" href="music.html">
+                <span class="nav-tile__no">01 / AUDIO</span>
+                <span class="nav-tile__label">音乐台</span>
+                <span class="nav-tile__desc">PLAYLIST · <span data-bind="count-music">00</span> TRACKS</span>
+              </a>
+              <a class="nav-tile" href="video.html">
+                <span class="nav-tile__no">02 / VIDEO</span>
+                <span class="nav-tile__label">影像室</span>
+                <span class="nav-tile__desc">SCREENING · <span data-bind="count-video">00</span> FILES</span>
+              </a>
+              <a class="nav-tile" href="portfolio.html">
+                <span class="nav-tile__no">03 / WORKS</span>
+                <span class="nav-tile__label">作品集</span>
+                <span class="nav-tile__desc">ARCHIVE · <span data-bind="count-works">00</span> UNITS</span>
+              </a>
+              <a class="nav-tile" href="about.html">
+                <span class="nav-tile__no">04 / INFO</span>
+                <span class="nav-tile__label">关于 / 联系</span>
+                <span class="nav-tile__desc">MAILTO · DIRECT</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">SYS-01</span>
+          <h2 class="panel__title">系统读数 / READOUT</h2>
+          <span class="panel__meta mono" data-panel-status data-on="LIVE" data-off="IDLE">STATUS:<b>LIVE</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起读数面板">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="stat">
+              <div class="stat__top">
+                <span class="mono muted">MEDIA FILES READY</span>
+                <span class="mono" data-media-ready>--/--</span>
+              </div>
+              <div class="meter" role="img" aria-label="媒体文件就绪比例">
+                <div class="meter__fill" data-media-meter style="width:0%"></div>
+              </div>
+            </div>
+
+            <hr class="hr">
+
+            <div class="readout">
+              <span class="mono readout__k">LOCAL TIME</span>
+              <span class="readout__v" data-clock-full>----/--/-- --:--:--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">SESSION UPTIME</span>
+              <span class="readout__v" data-uptime>T+00:00:00</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">MUSIC INDEX</span>
+              <span class="readout__v"><span data-bind="count-music">00</span> TRACKS</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">VIDEO INDEX</span>
+              <span class="readout__v"><span data-bind="count-video">00</span> FILES</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">WORK UNITS</span>
+              <span class="readout__v"><span data-bind="count-works">00</span> UNITS</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">LOCATION</span>
+              <span class="readout__v" data-bind="location">CN / REMOTE</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">FIRMWARE</span>
+              <span class="readout__v" data-bind="rev">REV0.1</span>
+            </div>
+          </div>
+          <div class="panel__foot mono">
+            <span class="lamp lamp--blue lamp--on" aria-hidden="true"></span>
+            <span>DATA SOURCE: assets/js/works.js</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============================================ 右栏：媒体面板 -->
+    <div class="col">
+
+      <section class="panel panel--dark plate--scan" data-panel id="media-panel">
+        <div class="panel__head">
+          <span class="panel__code mono">UNIT-01</span>
+          <h2 class="panel__title">媒体面板 / MEDIA BAY</h2>
+          <span class="panel__meta mono" data-panel-status data-on="STANDBY" data-off="IDLE">STATUS:<b>STANDBY</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起媒体面板">[–]</button>
+        </div>
+
+        <div class="panel__body">
+          <div class="tabs" role="tablist" aria-label="媒体类型">
+            <button class="tab is-active" role="tab" aria-selected="true" data-tab="music">AUDIO / 音乐</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="video">VIDEO / 视频</button>
+            <a class="tab tab--right" href="music.html" data-open-full>↗ 独立页面</a>
+          </div>
+
+          <!-- 音乐 pane -->
+          <div class="panel__inner" data-tabpane="music">
+            <div class="flex between center wrap gap-s mb-s">
+              <span class="mono muted">PLAYLIST / 歌单来自 works.js</span>
+              <span class="chip chip--dark"><span data-bind="count-music">00</span> TRACKS</span>
+            </div>
+            <div class="list" id="home-music-list"></div>
+
+            <div class="now">
+              <span class="lamp lamp--idle" id="home-lamp" aria-hidden="true"></span>
+              <div class="now__info">
+                <div class="now__title" id="home-now-title">未选择曲目</div>
+                <div class="now__sub" id="home-now-sub">STANDBY · 点击上方条目开始播放</div>
+              </div>
+              <div class="btn-row">
+                <button class="btn btn--ghost-dark btn--icon" id="home-prev" aria-label="上一首">◀◀</button>
+                <button class="btn btn--solid btn--icon" id="home-toggle" aria-label="播放或暂停">▶</button>
+                <button class="btn btn--ghost-dark btn--icon" id="home-next" aria-label="下一首">▶▶</button>
+              </div>
+              <div class="slider slider--blue" style="flex:1 1 100%;">
+                <div class="slider__track"></div>
+                <div class="slider__fill"></div>
+                <input class="slider__input" id="home-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度">
+              </div>
+              <div class="flex between center" style="flex:1 1 100%;">
+                <span class="time-readout"><b id="home-cur">--:--</b> / <span id="home-dur">--:--</span></span>
+                <span class="mono muted">MEDIA/music · MP3</span>
+              </div>
+            </div>
+            <audio id="home-audio" preload="metadata"></audio>
+          </div>
+
+          <!-- 视频 pane -->
+          <div class="panel__inner hidden" data-tabpane="video">
+            <div class="flex between center wrap gap-s mb-s">
+              <span class="mono muted">SCREENING / 列表来自 works.js</span>
+              <span class="chip chip--dark"><span data-bind="count-video">00</span> FILES</span>
+            </div>
+            <div class="stage">
+              <span class="stage__badge mono" id="home-video-badge">NO SIGNAL</span>
+              <div class="stage__empty" id="home-video-empty">选择下方影像开始播放<br>VIDEO / media/video</div>
+              <video id="home-video" playsinline preload="metadata" class="hidden"></video>
+            </div>
+            <div class="btn-row mt-s">
+              <button class="btn btn--solid btn--icon" id="home-v-toggle" aria-label="播放或暂停">▶</button>
+              <button class="btn btn--ghost-dark btn--icon" id="home-v-mute" aria-label="静音切换">VOL</button>
+              <a class="btn" href="video.html">进入影像室 →</a>
+            </div>
+            <hr class="hr hr--dark">
+            <div class="thumb-list" id="home-video-list"></div>
+          </div>
+        </div>
+
+        <div class="panel__foot mono">
+          <span>PATH: media/music · media/video · media/cover</span>
+          <span class="grow"></span>
+          <span class="lamp lamp--on" aria-hidden="true"></span>
+          <span>REV0.1</span>
+        </div>
+      </section>
+
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">WRK-LIST</span>
+          <h2 class="panel__title">作品速览 / RECENT UNITS</h2>
+          <span class="panel__meta mono" data-panel-status data-on="INDEXED" data-off="IDLE">STATUS:<b>INDEXED</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起作品速览">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner" style="padding:0">
+            <div class="list" id="home-work-list"></div>
+          </div>
+          <div class="panel__foot mono">
+            <span>点击任一条目进入作品集详情</span>
+            <span class="grow"></span>
+            <a class="btn" href="portfolio.html">全部作品 →</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner mono">
+    <span>WEIZHI MEDIA TERMINAL / 未址媒体终端</span>
+    <span>UNIT-01 · REV0.1 · SESSION <span data-uptime>T+00:00:00</span></span>
+    <span>© <span data-bind="year">2025</span> WEIZHI — STATIC / NO BACKEND</span>
+  </div>
+</footer>
+
+<script src="assets/js/works.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>

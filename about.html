@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于 / ABOUT — WEIZHI MEDIA TERMINAL</title>
+<meta name="description" content="关于 WEIZHI：影像 / 声音 / 交互装置，以及联系方式。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">WEIZHI <em>MEDIA</em> TERMINAL</span>
+      <span class="brand__sub mono">未址媒体终端</span>
+    </a>
+    <nav class="topnav" aria-label="主导航">
+      <a href="index.html">01 / HOME</a>
+      <a href="music.html">02 / MUSIC</a>
+      <a href="video.html">03 / VIDEO</a>
+      <a href="portfolio.html">04 / WORKS</a>
+      <a href="about.html">05 / ABOUT</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="lamp lamp--on" aria-hidden="true"></span>
+      <span class="mono status-text">STATUS:<b>ONLINE</b></span>
+      <span class="mono clock" data-clock title="本地时间">--:--:--</span>
+      <span class="mono rev-badge">REV0.1</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-head">
+    <h1 class="page-head__title">关于<span>// OPERATOR FILE / UNIT-05</span></h1>
+    <p class="page-head__desc">
+      个人档案、工作方式与联系方式。站点本身是纯静态的：没有后端、没有框架、没有构建步骤，直接用浏览器打开或本地起一个静态服务即可。
+    </p>
+    <div class="page-head__meta">
+      <span class="chip chip--accent">UNIT-05</span>
+      <span class="chip">ID: <span data-bind="unit">UNIT-01</span></span>
+    </div>
+  </div>
+
+  <div class="about-grid">
+
+    <!-- ============================================ 左：正文 -->
+    <section class="col">
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">FILE</span>
+          <h2 class="panel__title">个人档案 / PROFILE</h2>
+          <span class="panel__meta mono" data-panel-status data-on="OPEN" data-off="IDLE">STATUS:<b>OPEN</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起个人档案">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="prose">
+              <h3>我是谁</h3>
+              <p>
+                我是 WEIZHI，做影像、声音和交互装置的实验创作。习惯把过程也当成作品的一部分：
+                测试片段、失败样本、参数记录都会留档，而不是只留最终成品。
+              </p>
+
+              <h3>在做什么</h3>
+              <p>
+                目前重点在两件事：一是把声音的物理性（低频、震动、机械噪音）翻译成画面；
+                二是给声音做可交互的容器——装置、终端界面，或者一个能在展场自己跑起来的循环影像。
+              </p>
+
+              <h3>工作方式</h3>
+              <ul>
+                <li>先做样本，再谈方案：任何想法先做成 30 秒能看/能听的东西。</li>
+                <li>保持本地优先：素材、工程、成品都在自己的硬盘上，不依赖在线平台。</li>
+                <li>保留可读的记录：每个项目都写清参数、工具与踩过的坑。</li>
+              </ul>
+
+              <h3>工具</h3>
+              <p>
+                Ableton Live、Max/MSP、After Effects、Premiere、TouchDesigner、Figma，
+                以及一堆自己写的小脚本（其中就包括这个站点）。
+              </p>
+
+              <h3>关于这个站点</h3>
+              <p>
+                站点用纯 HTML / CSS / 原生 JS 写成，工业机能风的界面：细边框、切角模块、等宽字体读数。
+                所有媒体路径集中在 <code class="mono">assets/js/works.js</code>，文件分别放在
+                <code class="mono">media/music/</code>、<code class="mono">media/video/</code>、
+                <code class="mono">media/cover/</code>。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">LOG</span>
+          <h2 class="panel__title">时间线 / LOG</h2>
+          <span class="panel__meta mono" data-panel-status data-on="3 ENTRIES" data-off="IDLE">STATUS:<b>3 ENTRIES</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起时间线">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="tl">
+              <div class="tl__item">
+                <div class="tl__year mono">2025</div>
+                <div class="tl__title">TERMINAL LOOP / UNIT ARCHIVE</div>
+                <div class="tl__desc">为展场做循环影像，同时把一年的废稿整理成可检索的卷宗。</div>
+              </div>
+              <div class="tl__item">
+                <div class="tl__year mono">2024</div>
+                <div class="tl__title">IMMERSION PROTOCOL</div>
+                <div class="tl__desc">影像与低频绑定的短片实验，第一次把画面亮度交给音频驱动。</div>
+              </div>
+              <div class="tl__item">
+                <div class="tl__year mono">2024</div>
+                <div class="tl__title">COLD START SEQUENCE</div>
+                <div class="tl__desc">从一台旧机箱的启动噪音开始做声音作品，也是这套方法论的起点。</div>
+              </div>
+            </div>
+            <p class="mono muted" style="margin:0">时间线可以随时在 about.html 里改，是纯静态文本。</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============================================ 右：联系 -->
+    <section class="col">
+      <section class="panel panel--dark plate--scan" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">COMMS</span>
+          <h2 class="panel__title">联系方式 / CONTACT</h2>
+          <span class="panel__meta mono" data-panel-status data-on="OPEN" data-off="CLOSED">STATUS:<b>OPEN</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起联系方式">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="readout">
+              <span class="mono readout__k">EMAIL</span>
+              <span class="readout__v"><a class="mailto" data-bind="email" href="mailto:weizhi@example.com">weizhi@example.com</a></span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">LOCATION</span>
+              <span class="readout__v" data-bind="location">CN / REMOTE</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">AVAILABILITY</span>
+              <span class="readout__v accent">OPEN FOR 2025 Q3+</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">RESPONSE</span>
+              <span class="readout__v">WITHIN 3 DAYS</span>
+            </div>
+            <hr class="hr hr--dark">
+            <p class="muted" style="font-size:12px">
+              合作、放映、展场制作、声音设计，或者只是想聊聊某个装置怎么做——直接发邮件就行。
+              邮件里带上项目背景、时间与预算范围，回复会快很多。
+            </p>
+            <div class="btn-row">
+              <a class="btn btn--solid" data-bind="email-href" href="mailto:weizhi@example.com">写邮件 →</a>
+              <a class="btn" href="portfolio.html">先看作品集</a>
+            </div>
+          </div>
+          <div class="panel__foot mono">
+            <span class="lamp lamp--on" aria-hidden="true"></span>
+            <span>MAILTO 直连，无表单、无后端</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">SPEC</span>
+          <h2 class="panel__title">站点规格 / SYSTEM SPEC</h2>
+          <span class="panel__meta mono" data-panel-status data-on="READ" data-off="IDLE">STATUS:<b>READ</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起站点规格">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="readout">
+              <span class="mono readout__k">STACK</span>
+              <span class="readout__v">HTML / CSS / VANILLA JS</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">FRAMEWORK</span>
+              <span class="readout__v">NONE</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">BACKEND</span>
+              <span class="readout__v">NONE (STATIC)</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">DATA SOURCE</span>
+              <span class="readout__v">assets/js/works.js</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">MUSIC FILES</span>
+              <span class="readout__v">media/music/*.mp3</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">VIDEO FILES</span>
+              <span class="readout__v">media/video/*.mp4</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">COVERS</span>
+              <span class="readout__v">media/cover/*</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">MEDIA READY</span>
+              <span class="readout__v" data-media-ready>--/--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">REVISION</span>
+              <span class="readout__v" data-bind="rev">REV0.1</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">SESSION</span>
+              <span class="readout__v" data-uptime>T+00:00:00</span>
+            </div>
+            <hr class="hr">
+            <p class="muted" style="font-size:12px;margin-bottom:0">
+              想补真实文件？看仓库根目录的 <code class="mono">README.md</code>，
+              或直接打开 <code class="mono">media/</code> 下各目录里的说明文件。
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner mono">
+    <span>WEIZHI MEDIA TERMINAL / 未址媒体终端</span>
+    <span>UNIT-05 · ABOUT · REV0.1</span>
+    <span>© <span data-bind="year">2025</span> WEIZHI — STATIC / NO BACKEND</span>
+  </div>
+</footer>
+
+<script src="assets/js/works.js"></script>
+<script src="assets/js/ui.js"></script>
+<script>
+  /* 关于页：探测媒体就绪情况，让规格面板显示真实数据 */
+  (function () {
+    if (window.WM && window.WM.scanMedia) window.WM.scanMedia();
+  })();
+</script>
+</body>
+</html>

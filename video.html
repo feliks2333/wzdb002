@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>影像室 / VIDEO — WEIZHI MEDIA TERMINAL</title>
+<meta name="description" content="WEIZHI 的影像室：作品视频列表读取 assets/js/works.js，mp4 存放于 media/video/，封面存放于 media/cover/。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">WEIZHI <em>MEDIA</em> TERMINAL</span>
+      <span class="brand__sub mono">未址媒体终端</span>
+    </a>
+    <nav class="topnav" aria-label="主导航">
+      <a href="index.html">01 / HOME</a>
+      <a href="music.html">02 / MUSIC</a>
+      <a href="video.html">03 / VIDEO</a>
+      <a href="portfolio.html">04 / WORKS</a>
+      <a href="about.html">05 / ABOUT</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="lamp lamp--on" aria-hidden="true"></span>
+      <span class="mono status-text">STATUS:<b>ONLINE</b></span>
+      <span class="mono clock" data-clock title="本地时间">--:--:--</span>
+      <span class="mono rev-badge">REV0.1</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-head">
+    <h1 class="page-head__title">影像室<span>// VIDEO SCREENING / UNIT-03</span></h1>
+    <p class="page-head__desc">
+      视频列表来自 <code class="mono">assets/js/works.js</code>，mp4 放在 <code class="mono">media/video/</code>，
+      封面 poster 放在 <code class="mono">media/cover/</code>。播放 / 暂停、拖动进度、音量、全屏、循环模式都在自定义控制条里。
+    </p>
+    <div class="page-head__meta">
+      <span class="chip chip--accent">UNIT-03</span>
+      <span class="chip"><span data-bind="count-video">00</span> FILES</span>
+    </div>
+  </div>
+
+  <div class="two-col two-col--wide">
+
+    <!-- ============================================ 主播放区 -->
+    <section class="col">
+      <section class="panel panel--dark plate--scan" data-panel id="video-panel">
+        <div class="panel__head">
+          <span class="panel__code mono">DECK-B</span>
+          <h2 class="panel__title">主监视器 / MAIN MONITOR</h2>
+          <span class="panel__meta mono" data-panel-status data-on="READY" data-off="IDLE">STATUS:<b>STANDBY</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起监视器面板">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="stage" id="v-stage">
+            <span class="stage__badge mono" id="v-badge">NO SIGNAL</span>
+            <div class="stage__empty" id="v-empty">从右侧列表选择一段影像<br>VIDEO · media/video</div>
+            <video id="v-player" playsinline preload="metadata" class="hidden"></video>
+          </div>
+
+          <div class="vctrl">
+            <button class="btn-play" id="v-toggle" aria-label="播放或暂停">
+              <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0 L9 5 L1 10 Z"/></svg>
+            </button>
+            <div class="slider slider--blue vctrl__seek">
+              <div class="slider__track"></div>
+              <div class="slider__fill"></div>
+              <input class="slider__input" id="v-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度">
+            </div>
+            <span class="time-readout"><b id="v-cur">--:--</b> / <span id="v-dur">--:--</span></span>
+            <div class="vctrl__group">
+              <button class="btn btn--ghost-dark btn--icon" id="v-mute" aria-label="静音切换">VOL</button>
+              <div class="slider slider--blue vctrl__vol">
+                <div class="slider__track"></div>
+                <div class="slider__fill"></div>
+                <input class="slider__input" id="v-vol" type="range" min="0" max="100" value="80" step="1" aria-label="音量">
+              </div>
+            </div>
+            <div class="vctrl__group">
+              <span class="lamp lamp--idle" id="v-lamp" aria-hidden="true"></span>
+              <span class="btn btn--ghost-dark" id="v-loop" role="button" tabindex="0" aria-label="循环模式">LOOP:OFF</span>
+              <button class="btn btn--ghost-dark" id="v-full">全屏</button>
+            </div>
+          </div>
+
+          <div class="panel__inner">
+            <h3 id="v-title" style="font-size:15px;">未选择影像</h3>
+            <p class="mono muted" id="v-sub" style="margin:2px 0 0;">STANDBY · 从右侧列表选择</p>
+            <hr class="hr hr--dark">
+            <div class="readout">
+              <span class="mono readout__k">FILE ID</span>
+              <span class="readout__v" id="r-v-id">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">UNIT</span>
+              <span class="readout__v" id="r-v-code">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">SOURCE</span>
+              <span class="readout__v" id="r-v-src">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">POSTER</span>
+              <span class="readout__v" id="r-v-poster">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">FILE STATE</span>
+              <span class="readout__v" id="r-v-file">UNKNOWN</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">PLAY STATE</span>
+              <span class="readout__v" id="r-v-state">STANDBY</span>
+            </div>
+            <hr class="hr hr--dark">
+            <p class="muted" id="v-desc" style="margin:0;font-size:12px;">选择影像后显示简介。</p>
+          </div>
+
+          <div class="panel__foot mono">
+            <span class="lamp lamp--on" aria-hidden="true"></span>
+            <span id="v-path">PATH: media/video</span>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============================================ 影像列表 -->
+    <section class="col">
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">REEL</span>
+          <h2 class="panel__title">影像列表 / REEL</h2>
+          <span class="panel__meta mono" data-panel-status data-on="INDEXED" data-off="IDLE">STATUS:<b>INDEXED</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起影像列表">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="thumb-list" id="v-list"></div>
+          </div>
+          <div class="panel__foot mono">
+            <span>DATA: works.js → videos[]</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">NOTE</span>
+          <h2 class="panel__title">怎么补视频与封面</h2>
+          <span class="panel__meta mono" data-panel-status data-on="READ" data-off="IDLE">STATUS:<b>READ</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起说明">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="prose" style="max-width:none">
+              <p><b>视频</b>：mp4 放进 <code class="mono">media/video/</code>，在
+                <code class="mono">works.js → videos[].src</code> 里写上路径。</p>
+              <p><b>封面</b>：图片（jpg / png / webp 均可，建议 16:9）放进 <code class="mono">media/cover/</code>，
+                在 <code class="mono">videos[].poster</code> 里写上路径。封面缺失时播放器显示占位块，不会报错。</p>
+              <p class="muted" style="font-size:12px;margin-bottom:0">
+                视频编码建议 H.264 + AAC 的 mp4，浏览器兼容性最好；<code class="mono">runtime</code> 字段只是列表上的预估时长，
+                真实时长以文件为准。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner mono">
+    <span>WEIZHI MEDIA TERMINAL / 未址媒体终端</span>
+    <span>UNIT-03 · VIDEO · REV0.1</span>
+    <span>© <span data-bind="year">2025</span> WEIZHI — STATIC / NO BACKEND</span>
+  </div>
+</footer>
+
+<script src="assets/js/works.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/video.js"></script>
+</body>
+</html>

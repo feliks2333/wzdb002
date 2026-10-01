@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>音乐台 / AUDIO — WEIZHI MEDIA TERMINAL</title>
+<meta name="description" content="WEIZHI 的音乐台：播放列表读取 assets/js/works.js，音频文件存放于 media/music/。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">WEIZHI <em>MEDIA</em> TERMINAL</span>
+      <span class="brand__sub mono">未址媒体终端</span>
+    </a>
+    <nav class="topnav" aria-label="主导航">
+      <a href="index.html">01 / HOME</a>
+      <a href="music.html">02 / MUSIC</a>
+      <a href="video.html">03 / VIDEO</a>
+      <a href="portfolio.html">04 / WORKS</a>
+      <a href="about.html">05 / ABOUT</a>
+    </nav>
+    <div class="topbar__status">
+      <span class="lamp lamp--on" aria-hidden="true"></span>
+      <span class="mono status-text">STATUS:<b>ONLINE</b></span>
+      <span class="mono clock" data-clock title="本地时间">--:--:--</span>
+      <span class="mono rev-badge">REV0.1</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-head">
+    <h1 class="page-head__title">音乐台<span>// AUDIO TERMINAL / UNIT-02</span></h1>
+    <p class="page-head__desc">
+      歌单来自 <code class="mono">assets/js/works.js</code>，音频文件放在 <code class="mono">media/music/</code>（mp3）。
+      支持播放 / 暂停、上一首、下一首、拖动进度、调节音量。
+    </p>
+    <div class="page-head__meta">
+      <span class="chip chip--accent">UNIT-02</span>
+      <span class="chip"><span data-bind="count-music">00</span> TRACKS</span>
+    </div>
+  </div>
+
+  <div class="two-col two-col--player">
+
+    <!-- ============================================ 播放器 -->
+    <section class="col" style="gap:var(--gap)">
+      <section class="panel panel--dark plate--scan" data-panel id="player-panel">
+        <div class="panel__head">
+          <span class="panel__code mono">PLAYER</span>
+          <h2 class="panel__title">播放器 / DECK-A</h2>
+          <span class="panel__meta mono" data-panel-status data-on="READY" data-off="IDLE">STATUS:<b>STANDBY</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起播放器面板">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+
+            <div class="cover-box" id="m-cover-box">
+              <span class="cover-box__no mono" id="m-cover-no">--</span>
+            </div>
+
+            <h3 class="mt" id="m-title" style="font-size:15px;">未选择曲目</h3>
+            <p class="mono muted" id="m-sub" style="margin:2px 0 0;">STANDBY · 从右侧歌单选择</p>
+
+            <hr class="hr hr--dark">
+
+            <!-- 进度 -->
+            <div class="slider slider--blue" id="m-seek-wrap">
+              <div class="slider__track"></div>
+              <div class="slider__fill"></div>
+              <input class="slider__input" id="m-seek" type="range" min="0" max="1000" value="0" step="1"
+                     aria-label="播放进度" role="slider">
+            </div>
+            <div class="flex between center mt-s">
+              <span class="time-readout"><b id="m-cur">--:--</b> / <span id="m-dur">--:--</span></span>
+              <span class="mono muted" id="m-state">STATE:STANDBY</span>
+            </div>
+
+            <hr class="hr hr--dark">
+
+            <!-- 控制 -->
+            <div class="flex center gap wrap">
+              <button class="btn btn--ghost-dark btn--icon" id="m-prev" aria-label="上一首">◀◀</button>
+              <button class="btn-play" id="m-toggle" aria-label="播放或暂停">
+                <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0 L9 5 L1 10 Z"/></svg>
+              </button>
+              <button class="btn btn--ghost-dark btn--icon" id="m-next" aria-label="下一首">▶▶</button>
+              <span class="lamp lamp--idle" id="m-lamp" aria-hidden="true"></span>
+              <span class="btn btn--ghost-dark" id="m-repeat" role="button" tabindex="0" aria-label="循环模式">LOOP:ALL</span>
+            </div>
+
+            <hr class="hr hr--dark">
+
+            <!-- 音量 -->
+            <div class="flex center gap">
+              <button class="btn btn--ghost-dark btn--icon" id="m-mute" aria-label="静音切换">VOL</button>
+              <div class="slider slider--blue grow">
+                <div class="slider__track"></div>
+                <div class="slider__fill"></div>
+                <input class="slider__input" id="m-vol" type="range" min="0" max="100" value="80" step="1" aria-label="音量">
+              </div>
+              <span class="mono muted nowrap" id="m-vol-text">80%</span>
+            </div>
+          </div>
+
+          <div class="panel__foot mono">
+            <span class="lamp lamp--on" aria-hidden="true"></span>
+            <span id="m-path">PATH: media/music</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel data-collapsed="false">
+        <div class="panel__head">
+          <span class="panel__code mono">INFO</span>
+          <h2 class="panel__title">曲目读数 / TRACK READOUT</h2>
+          <span class="panel__meta mono" data-panel-status data-on="LIVE" data-off="IDLE">STATUS:<b>LIVE</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起曲目读数">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="readout">
+              <span class="mono readout__k">TRACK ID</span>
+              <span class="readout__v" id="r-id">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">UNIT</span>
+              <span class="readout__v" id="r-code">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">ALBUM</span>
+              <span class="readout__v" id="r-album">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">TAGS</span>
+              <span class="readout__v" id="r-tags">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">SOURCE</span>
+              <span class="readout__v" id="r-src">--</span>
+            </div>
+            <div class="readout">
+              <span class="mono readout__k">FILE STATE</span>
+              <span class="readout__v" id="r-file">UNKNOWN</span>
+            </div>
+            <hr class="hr">
+            <p class="muted" id="m-desc" style="margin:0;font-size:12px;">选择曲目后显示简介。</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============================================ 歌单 -->
+    <section class="col">
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">PLAYLIST</span>
+          <h2 class="panel__title">歌单 / TRACK LIST</h2>
+          <span class="panel__meta mono" data-panel-status data-on="INDEXED" data-off="IDLE">STATUS:<b>INDEXED</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起歌单">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner" style="padding:0">
+            <div class="list" id="m-list"></div>
+          </div>
+          <div class="panel__foot mono">
+            <span>DATA: assets/js/works.js → music[]</span>
+            <span class="grow"></span>
+            <span>空格播放/暂停 · ← → 快退快进 · ↑ ↓ 音量</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel>
+        <div class="panel__head">
+          <span class="panel__code mono">NOTE</span>
+          <h2 class="panel__title">怎么补音乐文件</h2>
+          <span class="panel__meta mono" data-panel-status data-on="READ" data-off="IDLE">STATUS:<b>READ</b></span>
+          <button class="panel__toggle" data-collapse aria-expanded="true" aria-label="展开或收起说明">[–]</button>
+        </div>
+        <div class="panel__body">
+          <div class="panel__inner">
+            <div class="prose" style="max-width:none">
+              <p><b>1.</b> 把 mp3 放进 <code class="mono">media/music/</code>，文件名随意，建议与曲目编号对应。</p>
+              <p><b>2.</b> 打开 <code class="mono">assets/js/works.js</code>，把 <code class="mono">music[]</code> 里对应条目的
+                <code class="mono">src</code> 改成真实路径，例如 <code class="mono">media/music/01-immersion-protocol.mp3</code>。</p>
+              <p><b>3.</b> 想加新曲子就复制一整段条目对象，保证 <code class="mono">id</code> 唯一；作品通过
+                <code class="mono">music: ['MUS-00X']</code> 关联到它。</p>
+              <p class="muted" style="font-size:12px;margin-bottom:0">
+                页面对文件缺失是容错的：加载失败时条目标记 OFFLINE，状态显示 MEDIA_MISSING，不会卡住界面。
+                <code class="mono">duration</code> 不用手填，播放器读到真实文件后会覆盖显示。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner mono">
+    <span>WEIZHI MEDIA TERMINAL / 未址媒体终端</span>
+    <span>UNIT-02 · AUDIO · REV0.1</span>
+    <span>© <span data-bind="year">2025</span> WEIZHI — STATIC / NO BACKEND</span>
+  </div>
+</footer>
+
+<script src="assets/js/works.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/music.js"></script>
+</body>
+</html>
